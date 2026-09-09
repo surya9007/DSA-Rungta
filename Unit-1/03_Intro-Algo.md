@@ -104,7 +104,7 @@ Every operation of an algorithm should be basic enough to be performed in a fini
 
 ---
 
-# 3. What is Algorithm Analysis?
+# What is Algorithm Analysis?
 
 **Algorithm analysis** is the process of determining the efficiency of an algorithm.
 
@@ -121,7 +121,7 @@ The purpose is to determine how efficiently an algorithm uses:
 
 ---
 
-# 4. Why Do We Need Algorithm Analysis?
+# Why Do We Need Algorithm Analysis?
 
 Suppose two algorithms solve the same problem.
 
@@ -167,7 +167,7 @@ Therefore, algorithm analysis helps us select a better algorithm.
 
 ---
 
-# 5. Factors Affecting Algorithm Performance
+# Factors Affecting Algorithm Performance
 
 Algorithm performance can depend on:
 
@@ -184,7 +184,7 @@ However, when studying algorithms theoretically, we generally focus on **input s
 
 ---
 
-# 6. Input Size
+# Input Size
 
 Input size represents the amount of data given to an algorithm.
 
@@ -228,7 +228,7 @@ n = length of string
 
 ---
 
-# 7. Time Complexity
+# Time Complexity
 
 ## Definition
 
@@ -264,7 +264,7 @@ Time Complexity = O(n)
 
 ---
 
-# 8. Basic Operation
+# Basic Operation
 
 A **basic operation** is an operation that takes approximately constant time.
 
@@ -295,7 +295,7 @@ O(1)
 
 ---
 
-# 9. Constant Time Complexity — O(1)
+# Constant Time Complexity — O(1)
 
 An algorithm has constant time complexity when its execution time does not depend on input size.
 
@@ -333,7 +333,7 @@ O(1)
 
 ---
 
-# 10. Linear Time Complexity — O(n)
+# Linear Time Complexity — O(n)
 
 An algorithm has linear complexity when the number of operations grows directly with input size.
 
@@ -377,7 +377,7 @@ O(n)
 
 ---
 
-# 11. Quadratic Time Complexity — O(n²)
+# Quadratic Time Complexity — O(n²)
 
 Quadratic complexity usually occurs with two nested loops.
 
@@ -418,7 +418,7 @@ O(n²)
 
 ---
 
-# 12. Cubic Time Complexity — O(n³)
+# Cubic Time Complexity — O(n³)
 
 Three nested loops generally produce cubic complexity.
 
@@ -450,7 +450,7 @@ O(n³)
 
 ---
 
-# 13. Logarithmic Time Complexity — O(log n)
+# Logarithmic Time Complexity — O(log n)
 
 An algorithm has logarithmic complexity when the problem size is repeatedly reduced by a constant factor.
 
@@ -493,7 +493,7 @@ Time Complexity = O(log n)
 ---
 
 
-# 15. Linearithmic Complexity — O(n log n)
+# Linearithmic Complexity — O(n log n)
 
 Many efficient sorting algorithms have:
 
@@ -532,7 +532,7 @@ O(n log n)
 
 ---
 
-# 16. Exponential Complexity — O(2ⁿ)
+# Exponential Complexity — O(2ⁿ)
 
 In exponential algorithms, the number of operations grows very rapidly as input size increases.
 
@@ -552,7 +552,7 @@ O(2ⁿ)
 
 ---
 
-# 17. Factorial Complexity — O(n!)
+# Factorial Complexity — O(n!)
 
 Factorial complexity is even more expensive.
 
@@ -585,7 +585,7 @@ The number grows extremely quickly.
 
 ---
 
-# 18. Common Time Complexities
+# Common Time Complexities
 
 From generally better to worse:
 
@@ -622,7 +622,7 @@ O(n!)
 
 ---
 
-# 19. Space Complexity
+# Space Complexity
 
 ## Definition
 
@@ -639,7 +639,7 @@ It includes memory used by:
 
 ---
 
-# 20. Example of O(1) Space
+# Example of O(1) Space
 
 ```java
 int sum = 0;
@@ -677,7 +677,7 @@ Space Complexity = O(n)
 
 ---
 
-# 22. Time vs Space Complexity
+# Time vs Space Complexity
 
 | Time Complexity               | Space Complexity                |
 | ----------------------------- | ------------------------------- |
@@ -689,7 +689,7 @@ Space Complexity = O(n)
 
 ---
 
-# 23. Auxiliary Space
+# Auxiliary Space
 
 **Auxiliary space** is the extra space used by an algorithm apart from the input data.
 
@@ -709,7 +709,7 @@ Auxiliary Space = O(1)
 
 ---
 
-# 24. Total Space Complexity
+# Total Space Complexity
 
 Total space generally includes:
 
@@ -1739,7 +1739,7 @@ Therefore:
 
 ---
 
-# 65. Important Exam Example
+# Important Exam Example
 
 Find the complexity:
 
@@ -1787,7 +1787,7 @@ O(n²)
 
 ---
 
-# 66. Another Important Exam Example
+# Another Important Exam Example
 
 Find the complexity:
 
@@ -1825,7 +1825,7 @@ O(n log n)
 
 ---
 
-# 67. Example: Three Loops
+# Example: Three Loops
 
 ```java
 for(int i = 0; i < n; i++) {
@@ -1853,7 +1853,7 @@ O(n³)
 
 ---
 
-# 68. Example: Logarithmic Loop
+# Example: Logarithmic Loop
 
 ```java
 int i = n;
@@ -1882,7 +1882,7 @@ O(log n)
 
 ---
 
-# 69. Example: Constant + Linear
+# Example: Constant + Linear
 
 ```java
 int x = 10;
@@ -1906,7 +1906,7 @@ O(n)
 
 ---
 
-# 70. Example: Linear + Quadratic
+# Example: Linear + Quadratic
 
 ```java
 for(int i = 0; i < n; i++) {
@@ -1932,7 +1932,7 @@ O(n²)
 
 ---
 
-# 71. Algorithm Efficiency
+# Algorithm Efficiency
 
 An efficient algorithm should ideally:
 
@@ -1946,7 +1946,7 @@ There is often a trade-off between time and space.
 
 ---
 
-# 72. Time-Space Trade-Off
+#  Time-Space Trade-Off
 
 Sometimes we use additional memory to reduce execution time.
 
@@ -1980,7 +1980,7 @@ This is called a **time-space trade-off**.
 
 ---
 
-# 73. Important Complexity Cheat Sheet
+# 73. Important Complexity
 
 ```text
 Single statement        → O(1)
@@ -2005,468 +2005,3 @@ All permutations         → O(n!)
 ```
 
 ---
-
-# 74. Semester Exam Important Definitions
-
-### Algorithm
-
-A finite sequence of well-defined instructions used to solve a problem.
-
-### Algorithm Analysis
-
-The process of evaluating the efficiency of an algorithm in terms of time and space.
-
-### Time Complexity
-
-The growth of the number of operations performed by an algorithm with respect to input size.
-
-### Space Complexity
-
-The amount of memory required by an algorithm with respect to input size.
-
-### Asymptotic Analysis
-
-A mathematical technique used to study the growth rate of an algorithm for large input sizes.
-
-### Big-O
-
-Represents an asymptotic upper bound.
-
-### Big-Omega
-
-Represents an asymptotic lower bound.
-
-### Big-Theta
-
-Represents a tight asymptotic bound.
-
----
-
-# 75. Short Notes for 2–3 Marks
-
-## What is Big-O?
-
-Big-O notation describes the upper bound of the growth rate of an algorithm.
-
-Example:
-
-```text
-3n² + 5n + 10 = O(n²)
-```
-
----
-
-## What is Big-Omega?
-
-Big-Omega describes the lower bound of an algorithm.
-
-Example:
-
-```text
-3n² + 5n + 10 = Ω(n²)
-```
-
----
-
-## What is Big-Theta?
-
-Big-Theta describes the tight asymptotic bound.
-
-Example:
-
-```text
-3n² + 5n + 10 = Θ(n²)
-```
-
----
-
-# 76. Frequently Asked Semester Questions
-
-### Q1. Define algorithm and explain its characteristics.
-
-Important points:
-
-* Input
-* Output
-* Definiteness
-* Finiteness
-* Effectiveness
-
----
-
-### Q2. What is algorithm analysis?
-
-Explain:
-
-```text
-Algorithm Analysis
-        ↓
-Time Complexity
-        +
-Space Complexity
-```
-
----
-
-### Q3. Explain time complexity with examples.
-
-Include:
-
-```text
-O(1)
-O(n)
-O(n²)
-O(log n)
-O(n log n)
-```
-
----
-
-### Q4. Explain space complexity.
-
-Discuss:
-
-* Input space
-* Auxiliary space
-* Variables
-* Arrays
-* Recursion stack
-
----
-
-### Q5. Explain asymptotic notations.
-
-Must include:
-
-```text
-Big-O
-Big-Ω
-Big-Θ
-```
-
----
-
-### Q6. Differentiate between O, Ω and Θ.
-
-Remember:
-
-```text
-O  → Upper Bound
-Ω  → Lower Bound
-Θ  → Tight Bound
-```
-
----
-
-### Q7. Find the time complexity of a given program.
-
-Look for:
-
-* Number of loops
-* Nested loops
-* Loop increments
-* Recursion
-* Sequential statements
-
----
-
-### Q8. Explain best, average and worst-case complexity.
-
-Example:
-
-Linear Search:
-
-```text
-Best    → O(1)
-Average → O(n)
-Worst   → O(n)
-```
-
----
-
-# 77. How to Analyze Any Program in Exam
-
-Follow these steps.
-
-### Step 1: Identify the input size
-
-Usually:
-
-```text
-n
-```
-
-### Step 2: Find loops
-
-Check:
-
-```text
-for
-while
-do-while
-```
-
-### Step 3: Check nested loops
-
-Nested loops generally multiply complexity.
-
-### Step 4: Check loop increment/decrement
-
-Examples:
-
-```text
-i++
-```
-
-usually:
-
-```text
-O(n)
-```
-
-```text
-i *= 2
-```
-
-usually:
-
-```text
-O(log n)
-```
-
-```text
-i /= 2
-```
-
-usually:
-
-```text
-O(log n)
-```
-
-### Step 5: Check recursion
-
-Determine the recurrence relation.
-
-### Step 6: Remove constants
-
-```text
-O(5n) → O(n)
-```
-
-### Step 7: Remove lower-order terms
-
-```text
-O(n² + n) → O(n²)
-```
-
-### Step 8: Write the final complexity
-
-Example:
-
-```text
-O(n²)
-```
-
----
-
-# 78. Quick Revision
-
-```text
-Algorithm
-   ↓
-Step-by-step solution
-   ↓
-Algorithm Analysis
-   ↓
-Time + Space
-   ↓
-Asymptotic Analysis
-   ↓
-O, Ω, Θ
-```
-
-### Time Complexity
-
-```text
-O(1)        Constant
-O(log n)    Logarithmic
-O(n)        Linear
-O(n log n)  Linearithmic
-O(n²)       Quadratic
-O(n³)       Cubic
-O(2ⁿ)       Exponential
-O(n!)       Factorial
-```
-
-### Asymptotic Notations
-
-```text
-O    → Upper Bound
-Ω    → Lower Bound
-Θ    → Tight Bound
-```
-
----
-
-# 79. One-Page Exam Revision Table
-
-| Topic              | Key Point                     |
-| ------------------ | ----------------------------- |
-| Algorithm          | Step-by-step solution         |
-| Algorithm Analysis | Measures efficiency           |
-| Time Complexity    | Measures computational growth |
-| Space Complexity   | Measures memory growth        |
-| Best Case          | Minimum work                  |
-| Average Case       | Expected work                 |
-| Worst Case         | Maximum work                  |
-| O(1)               | Constant                      |
-| O(log n)           | Logarithmic                   |
-| O(n)               | Linear                        |
-| O(n log n)         | Linearithmic                  |
-| O(n²)              | Quadratic                     |
-| O(n³)              | Cubic                         |
-| O(2ⁿ)              | Exponential                   |
-| O(n!)              | Factorial                     |
-| Big-O              | Upper bound                   |
-| Big-Ω              | Lower bound                   |
-| Big-Θ              | Tight bound                   |
-| Sequential loops   | Add                           |
-| Nested loops       | Multiply                      |
-| Ignore constants   | Yes                           |
-| Ignore lower terms | Yes                           |
-
----
-
-# 80. Final Exam Tips ⭐
-
-### Remember these five rules:
-
-**Rule 1**
-
-```text
-Single loop → O(n)
-```
-
-**Rule 2**
-
-```text
-Nested loops → Multiply
-```
-
-**Rule 3**
-
-```text
-Separate loops → Add
-```
-
-**Rule 4**
-
-```text
-i = i * 2 or i = i / 2 → O(log n)
-```
-
-**Rule 5**
-
-```text
-Remove constants and lower-order terms
-```
-
-Example:
-
-```text
-5n² + 10n + 20
-```
-
-Answer:
-
-```text
-O(n²)
-```
-
----
-
-# ⭐ Most Important Formulas
-
-### Arithmetic Series
-
-```text
-1 + 2 + 3 + ... + n
-
-= n(n + 1)/2
-
-= O(n²)
-```
-
-### Geometric Series
-
-```text
-1 + 2 + 4 + 8 + ... + n
-
-= O(n)
-```
-
-### Logarithmic Reduction
-
-```text
-n → n/2 → n/4 → n/8 → ... → 1
-
-= O(log n)
-```
-
-### Binary Search
-
-```text
-T(n) = T(n/2) + O(1)
-
-= O(log n)
-```
-
-### Merge Sort
-
-```text
-T(n) = 2T(n/2) + O(n)
-
-= O(n log n)
-```
-
----
-
-# Conclusion
-
-Algorithm analysis is one of the most important foundations of Data Structures and Algorithms.
-
-It allows us to compare different solutions independent of the computer or programming language being used.
-
-The two major measures are:
-
-```text
-Time Complexity
-        +
-Space Complexity
-```
-
-Asymptotic notations provide a mathematical way to represent algorithm growth:
-
-```text
-Big-O       → Upper Bound
-Big-Ω       → Lower Bound
-Big-Θ       → Tight Bound
-```
-
-For semester examinations, students should especially understand:
-
-```text
-O(1)
-O(log n)
-O(n)
-O(n log n)
-O(n²)
-O(n³)
-O(2ⁿ)
-O(n!)
-```
-
-and should be able to calculate the complexity of loops, nested loops, recursive algorithms, searching algorithms, and sorting algorithms.
-
-> **Key idea:** A good algorithm is not only one that gives the correct answer, but one that solves the problem efficiently in terms of time and memory.
