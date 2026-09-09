@@ -1,44 +1,178 @@
-# 1D Array Operations in Java
+# Arrays: 1D Array in Java
 
-## Introduction to 1D Array
+---
 
-An **array** is a linear data structure used to store a collection of elements of the **same data type** in contiguous memory locations.
+# 1. Introduction to Array
 
-A **1D (one-dimensional) array** stores elements in a single sequence.
+An **array** is a linear data structure used to store multiple elements of the **same data type** in a contiguous block of memory.
 
-Example:
+Instead of creating multiple variables:
 
-```text
-10  20  30  40  50
+```java
+int a = 10;
+int b = 20;
+int c = 30;
+int d = 40;
 ```
 
-Each element can be accessed using an **index**.
+we can use an array:
 
-In Java, array indexing starts from:
-
-```text
-0
+```java
+int[] arr = {10, 20, 30, 40};
 ```
 
-Therefore:
+An array stores multiple values under a single variable name.
 
-```text
-Index:   0   1   2   3   4
-         ↓   ↓   ↓   ↓   ↓
-Array:  10  20  30  40  50
+---
+
+# 2. Why Do We Need Arrays?
+
+Suppose we want to store marks of 100 students.
+
+Without an array:
+
+```java
+int marks1;
+int marks2;
+int marks3;
+...
+int marks100;
 ```
 
-For an array of size `n`, valid indexes are:
+This is difficult to manage.
+
+Using an array:
+
+```java
+int[] marks = new int[100];
+```
+
+Now all 100 values can be stored using one variable.
 
 ```text
-0 to n - 1
+marks[0]
+marks[1]
+marks[2]
+...
+marks[99]
 ```
 
 ---
 
-# 1. Declaration of 1D Array
+# 3. Definition of Array
 
-In Java, an array can be declared as:
+### Exam Definition
+
+> An array is a collection of elements of the same data type stored in contiguous memory locations and accessed using an index.
+
+Important points:
+
+1. Same data type
+2. Fixed size in Java
+3. Index-based access
+4. Contiguous logical storage
+5. First index is `0`
+
+---
+
+# 4. Characteristics of Array
+
+## 4.1 Homogeneous
+
+An array stores elements of the same type.
+
+Example:
+
+```java
+int[] arr = {10, 20, 30, 40};
+```
+
+All elements are integers.
+
+---
+
+## 4.2 Fixed Size
+
+Once an array is created in Java, its length cannot be changed.
+
+```java
+int[] arr = new int[5];
+```
+
+The length is:
+
+```text
+5
+```
+
+We cannot directly increase it to 10.
+
+If we need a larger array, we create a new array and copy the elements.
+
+---
+
+## 4.3 Index Based
+
+Every element is accessed using an index.
+
+For:
+
+```java
+int[] arr = {10, 20, 30, 40};
+```
+
+Indexes are:
+
+```text
+Index:    0   1   2   3
+          ↓   ↓   ↓   ↓
+Array:   10  20  30  40
+```
+
+---
+
+## 4.4 Zero-Based Indexing
+
+Java arrays start from index `0`.
+
+For an array of size `n`:
+
+```text
+First index = 0
+Last index  = n - 1
+```
+
+For size `5`:
+
+```text
+0  1  2  3  4
+```
+
+---
+
+# One-Dimensional Array
+
+A **one-dimensional array** stores elements in a single linear sequence.
+
+Example:
+
+```text
+10 20 30 40 50
+```
+
+It can be represented as:
+
+```text
+Index:   0   1   2   3   4
+         ↓   ↓   ↓   ↓   ↓
+Value:  10  20  30  40  50
+```
+
+---
+
+# Declaration of 1D Array
+
+In Java:
 
 ```java
 int[] arr;
@@ -50,431 +184,260 @@ or:
 int arr[];
 ```
 
-The preferred Java style is:
+Preferred syntax:
 
 ```java
 int[] arr;
 ```
 
+At this point, only the reference is declared.
+
+Memory for elements has not yet been allocated.
+
 ---
 
-# 2. Array Creation
+# Array Creation
 
-An array can be created using the `new` keyword.
+We use the `new` keyword.
 
 ```java
 int[] arr = new int[5];
 ```
 
-This creates an integer array capable of storing 5 elements.
+This creates an integer array of size `5`.
 
-Initially, Java initializes integer array elements to:
+Indexes:
 
 ```text
-0
+0  1  2  3  4
 ```
 
-Example:
+Default values for an integer array are:
 
 ```text
-Index:  0  1  2  3  4
-        ↓  ↓  ↓  ↓  ↓
-Array:  0  0  0  0  0
+0 0 0 0 0
 ```
 
 ---
 
-# 3. Array Initialization
+# Declaration + Initialization
 
-We can initialize an array directly:
+We can directly initialize an array:
 
 ```java
 int[] arr = {10, 20, 30, 40, 50};
 ```
 
-The array contains:
+Java automatically determines the size.
 
-```text
-Index:  0   1   2   3   4
-        ↓   ↓   ↓   ↓   ↓
-       10  20  30  40  50
-```
-
----
-
-# 4. Accessing Array Elements
-
-We can access an element using its index.
+Array size:
 
 ```java
-int[] arr = {10, 20, 30, 40, 50};
-
-System.out.println(arr[0]);
-System.out.println(arr[3]);
+arr.length
 ```
 
 Output:
 
 ```text
-10
-40
+5
 ```
 
 ---
 
-# 5. Updating an Array Element
+# Taking User Input in 1D Array
 
-To update an element, assign a new value to its index.
+For user input, we commonly use the `Scanner` class.
+
+Import:
 
 ```java
-arr[2] = 100;
+import java.util.Scanner;
 ```
 
-Before:
-
-```text
-10 20 30 40 50
-      ↑
-```
-
-After:
-
-```text
-10 20 100 40 50
-```
-
-The size of the array does not change.
-
----
-
-# 6. Important 1D Array Operations
-
-The most important operations performed on a 1D array are:
-
-```text
-1. Traversal
-2. Insertion
-3. Deletion
-4. Updation
-5. Searching
-6. Sorting
-```
-
-We can represent them as:
-
-```text
-                    1D ARRAY
-                       |
-       -----------------------------------
-       |       |       |       |         |
-    Insert  Delete  Update  Search     Sort
-```
-
----
-
-# 7. Traversal
-
-Traversal means visiting every element of an array one by one.
-
-Example:
-
-```text
-10 20 30 40 50
-```
-
-Traversal:
-
-```text
-10
-20
-30
-40
-50
-```
-
-### Java Code
+Create Scanner object:
 
 ```java
-public class Main {
+Scanner sc = new Scanner(System.in);
+```
 
+---
+
+# Complete Program: User Input in Array
+
+```java
+import java.util.Scanner;
+
+public class ArrayInput {
     public static void main(String[] args) {
 
-        int[] arr = {10, 20, 30, 40, 50};
+        Scanner sc = new Scanner(System.in);
 
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
-        }
-    }
-}
-```
+        System.out.print("Enter array size: ");
+        int n = sc.nextInt();
 
-### Time Complexity
+        int[] arr = new int[n];
 
-```text
-O(n)
-```
+        System.out.println("Enter " + n + " elements:");
 
-because every element is visited once.
-
----
-
-# 8. Insertion in 1D Array
-
-## What is Insertion?
-
-**Insertion** means adding a new element at a particular position in an array.
-
-Suppose we have:
-
-```text
-10 20 30 40
-```
-
-We want to insert:
-
-```text
-25
-```
-
-at index:
-
-```text
-2
-```
-
-Before insertion:
-
-```text
-Index:  0   1   2   3
-        ↓   ↓   ↓   ↓
-       10  20  30  40
-```
-
-After insertion:
-
-```text
-Index:  0   1   2   3   4
-        ↓   ↓   ↓   ↓   ↓
-       10  20  25  30  40
-```
-
----
-
-# 9. Why Shifting is Required During Insertion?
-
-Arrays store elements in consecutive positions.
-
-If we want to insert an element in the middle, existing elements must be shifted to the right to create an empty position.
-
-Example:
-
-```text
-Before:
-
-10 20 30 40
-      ↑
-   Position 2
-```
-
-To insert `25`:
-
-```text
-40 → right
-30 → right
-```
-
-Then:
-
-```text
-10 20 25 30 40
-```
-
-The shifting is done from **right to left**.
-
----
-
-# 10. Algorithm for Insertion
-
-To insert an element at a particular index:
-
-```text
-Step 1: Start
-Step 2: Check whether there is available space
-Step 3: Check whether the position is valid
-Step 4: Start from the last occupied position
-Step 5: Shift elements one position to the right
-Step 6: Continue until the insertion position is reached
-Step 7: Insert the new element
-Step 8: Increase the current size
-Step 9: Stop
-```
-
----
-
-# 11. Java Code for Insertion
-
-```java
-public class Main {
-
-    public static void main(String[] args) {
-
-        int[] arr = new int[10];
-
-        int n = 4;
-
-        arr[0] = 10;
-        arr[1] = 20;
-        arr[2] = 30;
-        arr[3] = 40;
-
-        int position = 2;
-        int element = 25;
-
-        for (int i = n; i > position; i--) {
-            arr[i] = arr[i - 1];
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
         }
 
-        arr[position] = element;
-        n++;
+        System.out.println("Array elements:");
 
-        System.out.println("Array after insertion:");
-
-        for (int i = 0; i < n; i++) {
+        for(int i = 0; i < n; i++) {
             System.out.print(arr[i] + " ");
         }
     }
 }
 ```
 
-Output:
+### Sample Input
 
 ```text
-Array after insertion:
-10 20 25 30 40
+Enter array size: 5
+Enter 5 elements:
+10 20 30 40 50
 ```
 
----
-
-# 12. Insertion at Beginning
-
-Suppose:
+### Output
 
 ```text
-10 20 30 40
-```
-
-We want to insert:
-
-```text
-5
-```
-
-at index `0`.
-
-All elements must shift right.
-
-```text
-Before:
-
-10 20 30 40
-
-After shifting:
-
-_ 10 20 30 40
-
-Insert 5:
-
-5 10 20 30 40
-```
-
-### Code
-
-```java
-int position = 0;
-int element = 5;
-
-for (int i = n; i > position; i--) {
-    arr[i] = arr[i - 1];
-}
-
-arr[position] = element;
-n++;
-```
-
----
-
-# 13. Insertion at End
-
-Suppose:
-
-```text
-10 20 30 40
-```
-
-We want to insert:
-
-```text
-50
-```
-
-at the end.
-
-No shifting is required.
-
-```java
-arr[n] = 50;
-n++;
-```
-
-Result:
-
-```text
+Array elements:
 10 20 30 40 50
 ```
 
 ---
 
-# 14. Time Complexity of Insertion
+# Array Traversal
 
-Insertion complexity depends on the position.
+## Definition
 
-### Beginning
+**Traversal** means visiting or accessing every element of an array exactly once.
 
-Many elements need to be shifted.
-
-```text
-O(n)
-```
-
-### Middle
-
-Some elements need to be shifted.
+Example:
 
 ```text
-O(n)
+10 20 30 40 50
 ```
 
-### End
+Traversal means:
 
-No shifting is generally required if there is free capacity.
+```text
+10 → 20 → 30 → 40 → 50
+```
+
+---
+
+# Traversal Using for Loop
+
+```java
+for(int i = 0; i < arr.length; i++) {
+    System.out.print(arr[i] + " ");
+}
+```
+
+### Complete Program
+
+```java
+import java.util.Scanner;
+
+public class ArrayTraversal {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter size: ");
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        System.out.println("Enter elements:");
+
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        System.out.println("Array:");
+
+        for(int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+}
+```
+
+### Complexity
+
+```text
+Time Complexity  = O(n)
+Space Complexity = O(n)
+```
+
+The `O(n)` space above refers to the array used to store the input. The traversal itself uses `O(1)` extra space.
+
+---
+
+# Traversal Using Enhanced for Loop
+
+Java also provides the enhanced `for` loop.
+
+```java
+for(int x : arr) {
+    System.out.print(x + " ");
+}
+```
+
+Example:
+
+```java
+int[] arr = {10, 20, 30, 40};
+
+for(int x : arr) {
+    System.out.print(x + " ");
+}
+```
+
+Output:
+
+```text
+10 20 30 40
+```
+
+---
+
+# Accessing Individual Elements
+
+```java
+System.out.println(arr[0]);
+System.out.println(arr[1]);
+System.out.println(arr[2]);
+```
+
+Example:
+
+```text
+Array = 10 20 30 40 50
+
+arr[0] = 10
+arr[1] = 20
+arr[2] = 30
+```
+
+Accessing an element by index takes:
 
 ```text
 O(1)
 ```
 
-### Worst Case
-
-```text
-O(n)
-```
-
 ---
 
-# 15. Deletion in 1D Array
+# Updating an Array Element
 
-## What is Deletion?
+## Definition
 
-Deletion means removing an element from an array.
+Updating means changing the value of an existing element.
 
 Suppose:
 
@@ -482,15 +445,367 @@ Suppose:
 10 20 30 40 50
 ```
 
-We want to delete the element at index `2`.
+We want to change `30` to `100`.
 
-Element:
-
-```text
-30
+```java
+arr[2] = 100;
 ```
 
-After deletion:
+Array becomes:
+
+```text
+10 20 100 40 50
+```
+
+---
+
+# 16. Complete Program: Update an Element
+
+```java
+import java.util.Scanner;
+
+public class ArrayUpdate {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter size: ");
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        System.out.println("Enter elements:");
+
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        System.out.print("Enter index to update: ");
+        int index = sc.nextInt();
+
+        System.out.print("Enter new value: ");
+        int value = sc.nextInt();
+
+        if(index >= 0 && index < n) {
+
+            arr[index] = value;
+
+            System.out.println("Updated array:");
+
+            for(int i = 0; i < n; i++) {
+                System.out.print(arr[i] + " ");
+            }
+
+        } else {
+            System.out.println("Invalid index");
+        }
+    }
+}
+```
+
+### Complexity
+
+```text
+Time Complexity = O(1)
+```
+
+for the actual update operation.
+
+---
+
+# Insertion in 1D Array
+
+## Definition
+
+Insertion means adding a new element at a particular position in an array.
+
+Example:
+
+Original:
+
+```text
+10 20 30 40
+```
+
+Insert `25` at index `2`.
+
+New array:
+
+```text
+10 20 25 30 40
+```
+
+---
+
+# Why Is Shifting Required?
+
+Arrays store elements in sequential positions.
+
+Suppose:
+
+```text
+Index:   0   1   2   3
+Value:  10  20  30  40
+```
+
+We want to insert `25` at index `2`.
+
+Before:
+
+```text
+10 20 30 40
+```
+
+We first shift elements toward the right:
+
+```text
+10 20 30 40
+         ↑  ↑
+```
+
+`40` moves to the next position.
+
+Then `30` moves to the next position.
+
+Finally:
+
+```text
+10 20 25 30 40
+```
+
+---
+
+# Insertion Algorithm
+
+To insert an element at index `pos`:
+
+1. Check whether there is free space.
+2. Start from the last occupied element.
+3. Shift elements one position to the right.
+4. Continue until `pos`.
+5. Insert the new element at `pos`.
+6. Increase the logical size.
+
+---
+
+# Important Insertion Logic
+
+```java
+for(int i = n; i > pos; i--) {
+    arr[i] = arr[i - 1];
+}
+
+arr[pos] = value;
+n++;
+```
+
+Notice:
+
+```text
+i = n
+```
+
+and not:
+
+```text
+i = 0
+```
+
+because we need to shift from **right to left**.
+
+---
+
+# Complete Insertion Program
+
+Because Java arrays have fixed length, we create an array with extra capacity.
+
+```java
+import java.util.Scanner;
+
+public class ArrayInsertion {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter capacity: ");
+        int capacity = sc.nextInt();
+
+        int[] arr = new int[capacity];
+
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+
+        System.out.println("Enter elements:");
+
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        System.out.print("Enter position/index for insertion: ");
+        int pos = sc.nextInt();
+
+        System.out.print("Enter value: ");
+        int value = sc.nextInt();
+
+        if(n == capacity) {
+            System.out.println("Array is full. Insertion not possible.");
+        }
+        else if(pos < 0 || pos > n) {
+            System.out.println("Invalid position.");
+        }
+        else {
+
+            for(int i = n; i > pos; i--) {
+                arr[i] = arr[i - 1];
+            }
+
+            arr[pos] = value;
+            n++;
+
+            System.out.println("Array after insertion:");
+
+            for(int i = 0; i < n; i++) {
+                System.out.print(arr[i] + " ");
+            }
+        }
+    }
+}
+```
+
+---
+
+# Example of Insertion
+
+Suppose:
+
+```text
+n = 4
+
+10 20 30 40
+```
+
+Insert:
+
+```text
+value = 25
+position = 2
+```
+
+### Step 1
+
+Shift `40`:
+
+```text
+10 20 30 40 40
+```
+
+### Step 2
+
+Shift `30`:
+
+```text
+10 20 30 30 40
+```
+
+### Step 3
+
+Insert `25`:
+
+```text
+10 20 25 30 40
+```
+
+Final array:
+
+```text
+10 20 25 30 40
+```
+
+---
+
+# Insertion at Beginning
+
+To insert at index `0`:
+
+```java
+for(int i = n; i > 0; i--) {
+    arr[i] = arr[i - 1];
+}
+
+arr[0] = value;
+n++;
+```
+
+Example:
+
+```text
+Original:
+20 30 40
+
+Insert:
+10
+```
+
+Result:
+
+```text
+10 20 30 40
+```
+
+---
+
+# Insertion at End
+
+Insertion at the end does not require shifting.
+
+```java
+arr[n] = value;
+n++;
+```
+
+Example:
+
+```text
+10 20 30
+```
+
+Insert `40`.
+
+Result:
+
+```text
+10 20 30 40
+```
+
+Complexity:
+
+```text
+O(1)
+```
+
+assuming there is free capacity.
+
+---
+
+# Deletion from 1D Array
+
+## Definition
+
+Deletion means removing an element from an array.
+
+Example:
+
+Original:
+
+```text
+10 20 30 40 50
+```
+
+Delete element at index `2`.
+
+Result:
 
 ```text
 10 20 40 50
@@ -498,19 +813,23 @@ After deletion:
 
 ---
 
-# 16. Why Shifting is Required During Deletion?
+# Why Is Shifting Required in Deletion?
 
-After removing an element, a gap is created.
+After deleting an element, a gap is created.
 
-Before:
+Original:
 
 ```text
 10 20 30 40 50
-      ↑
-    Delete
 ```
 
-After removing `30`:
+Delete:
+
+```text
+30
+```
+
+Temporary:
 
 ```text
 10 20 _ 40 50
@@ -519,8 +838,117 @@ After removing `30`:
 To remove the gap, elements after the deleted element are shifted left:
 
 ```text
-40 → left
-50 → left
+10 20 40 50
+```
+
+---
+
+# Deletion Algorithm
+
+To delete an element at position `pos`:
+
+1. Check whether the position is valid.
+2. Start from `pos`.
+3. Shift every next element one position left.
+4. Decrease the logical size.
+5. Display the array.
+
+---
+
+# 28. Important Deletion Logic
+
+```java
+for(int i = pos; i < n - 1; i++) {
+    arr[i] = arr[i + 1];
+}
+
+n--;
+```
+
+Notice:
+
+```text
+i < n - 1
+```
+
+because `arr[i + 1]` must remain a valid index.
+
+---
+
+# Complete Deletion Program
+
+```java
+import java.util.Scanner;
+
+public class ArrayDeletion {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter size: ");
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        System.out.println("Enter elements:");
+
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        System.out.print("Enter index to delete: ");
+        int pos = sc.nextInt();
+
+        if(pos < 0 || pos >= n) {
+
+            System.out.println("Invalid index.");
+
+        } else {
+
+            for(int i = pos; i < n - 1; i++) {
+                arr[i] = arr[i + 1];
+            }
+
+            n--;
+
+            System.out.println("Array after deletion:");
+
+            for(int i = 0; i < n; i++) {
+                System.out.print(arr[i] + " ");
+            }
+        }
+    }
+}
+```
+
+---
+
+# Example of Deletion
+
+Original:
+
+```text
+10 20 30 40 50
+```
+
+Delete index:
+
+```text
+2
+```
+
+Element:
+
+```text
+30
+```
+
+Shift:
+
+```text
+40 → index 2
+50 → index 3
 ```
 
 Final:
@@ -531,131 +959,31 @@ Final:
 
 ---
 
-# 17. Algorithm for Deletion
+# Deletion from Beginning
 
-```text
-Step 1: Start
-Step 2: Check whether the array contains elements
-Step 3: Check whether the position is valid
-Step 4: Start from the deletion position
-Step 5: Shift every next element one position to the left
-Step 6: Decrease the current size
-Step 7: Stop
-```
-
----
-
-# 18. Java Code for Deletion
+To delete the first element:
 
 ```java
-public class Main {
-
-    public static void main(String[] args) {
-
-        int[] arr = {10, 20, 30, 40, 50};
-
-        int n = 5;
-        int position = 2;
-
-        for (int i = position; i < n - 1; i++) {
-            arr[i] = arr[i + 1];
-        }
-
-        n--;
-
-        System.out.println("Array after deletion:");
-
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
-    }
-}
-```
-
-Output:
-
-```text
-Array after deletion:
-10 20 40 50
-```
-
----
-
-# 19. Deletion from Beginning
-
-Suppose:
-
-```text
-10 20 30 40 50
-```
-
-Delete index `0`.
-
-The remaining elements shift left:
-
-```text
-20 30 40 50
-```
-
-### Code
-
-```java
-for (int i = 0; i < n - 1; i++) {
+for(int i = 0; i < n - 1; i++) {
     arr[i] = arr[i + 1];
 }
 
 n--;
 ```
 
----
-
-# 20. Deletion from End
-
-Suppose:
-
-```text
-10 20 30 40 50
-```
-
-Delete the last element.
-
-No shifting is required.
-
-Simply decrease the logical size:
-
-```java
-n--;
-```
-
-The active array becomes:
+Example:
 
 ```text
 10 20 30 40
 ```
 
----
-
-# 21. Time Complexity of Deletion
-
-### Beginning
+After deletion:
 
 ```text
-O(n)
+20 30 40
 ```
 
-### Middle
-
-```text
-O(n)
-```
-
-### End
-
-```text
-O(1)
-```
-
-### Worst Case
+Complexity:
 
 ```text
 O(n)
@@ -663,460 +991,460 @@ O(n)
 
 ---
 
-# 22. Updation in 1D Array
+# Deletion from End
 
-## What is Updation?
+To delete the last element:
 
-Updation means replacing an existing element with a new value.
+```java
+n--;
+```
+
+No shifting is required.
 
 Example:
 
 ```text
-Before:
-
-10 20 30 40 50
+10 20 30 40
 ```
 
-Update index `2`:
+After deletion:
 
 ```text
-30 → 100
+10 20 30
 ```
 
-After:
-
-```text
-10 20 100 40 50
-```
-
----
-
-# 23. Algorithm for Updation
-
-```text
-Step 1: Start
-Step 2: Read the position
-Step 3: Check whether the position is valid
-Step 4: Replace the existing value with the new value
-Step 5: Stop
-```
-
----
-
-# 24. Java Code for Updation
-
-```java
-public class Main {
-
-    public static void main(String[] args) {
-
-        int[] arr = {10, 20, 30, 40, 50};
-
-        int position = 2;
-        int newValue = 100;
-
-        arr[position] = newValue;
-
-        System.out.println("Array after updation:");
-
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
-    }
-}
-```
-
-Output:
-
-```text
-Array after updation:
-10 20 100 40 50
-```
-
----
-
-# 25. Time Complexity of Updation
-
-Array elements can be directly accessed using their index.
-
-Therefore:
-
-```java
-arr[index] = value;
-```
-
-takes:
+Complexity:
 
 ```text
 O(1)
 ```
 
-time.
-
-So:
-
-```text
-Updation = O(1)
-```
-
-assuming the index is valid.
-
 ---
 
-# 26. Searching in 1D Array
+# Searching in Array
 
 Searching means finding whether a particular element exists in the array.
 
 Example:
 
 ```text
-Array:
-
 10 20 30 40 50
 ```
 
 Search:
 
 ```text
-40
+30
 ```
 
 Result:
 
 ```text
-Element found at index 3
-```
-
-Two important searching techniques are:
-
-```text
-1. Linear Search
-2. Binary Search
+Element found at index 2
 ```
 
 ---
 
-# 27. Linear Search
+# Linear Search
 
-Linear Search checks elements one by one from the beginning until the target is found or the array ends.
+Linear Search checks elements one by one.
 
-Example:
-
-```text
-Array:
-
-10 20 30 40 50
-
-Target = 40
-```
-
-Process:
+### Algorithm
 
 ```text
-10 → No
-20 → No
-30 → No
-40 → Yes
-```
-
-Result:
-
-```text
-Index = 3
+Start from index 0
+       ↓
+Compare element with target
+       ↓
+If equal → Found
+       ↓
+Otherwise move to next element
+       ↓
+Repeat
 ```
 
 ---
 
-# 28. Algorithm for Linear Search
-
-```text
-Step 1: Start
-Step 2: Read array and target
-Step 3: Start from index 0
-Step 4: Compare current element with target
-Step 5: If equal, return the index
-Step 6: Otherwise continue
-Step 7: If the end is reached, return -1
-Step 8: Stop
-```
-
----
-
-# 29. Java Code for Linear Search
+# Linear Search Code
 
 ```java
-public class Main {
+import java.util.Scanner;
+
+public class LinearSearch {
 
     public static void main(String[] args) {
 
-        int[] arr = {10, 20, 30, 40, 50};
+        Scanner sc = new Scanner(System.in);
 
-        int target = 40;
+        System.out.print("Enter size: ");
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        System.out.println("Enter elements:");
+
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        System.out.print("Enter element to search: ");
+        int target = sc.nextInt();
+
         int index = -1;
 
-        for (int i = 0; i < arr.length; i++) {
+        for(int i = 0; i < n; i++) {
 
-            if (arr[i] == target) {
+            if(arr[i] == target) {
                 index = i;
                 break;
             }
         }
 
-        if (index != -1) {
-            System.out.println("Element found at index: " + index);
-        } else {
+        if(index != -1) {
+            System.out.println("Element found at index " + index);
+        }
+        else {
             System.out.println("Element not found");
         }
     }
 }
 ```
 
-Output:
+### Complexity
 
-```text
-Element found at index: 3
-```
-
----
-
-# 30. Time Complexity of Linear Search
-
-### Best Case
-
-Target is at the first position:
+Best Case:
 
 ```text
 O(1)
 ```
 
-### Worst Case
-
-Target is at the last position or not present:
+Worst Case:
 
 ```text
 O(n)
 ```
 
-### Space Complexity
-
-```text
-O(1)
-```
-
 ---
 
-# 31. Binary Search
-
-Binary Search is an efficient searching algorithm that works on a **sorted array**.
-
-Example:
-
-```text
-10 20 30 40 50 60 70
-```
-
-Search:
-
-```text
-60
-```
-
-Binary Search repeatedly divides the search range into two halves.
-
----
-
-# 32. Working of Binary Search
-
-Consider:
-
-```text
-10 20 30 40 50 60 70
-```
-
-Target:
-
-```text
-60
-```
-
-First middle:
-
-```text
-40
-```
-
-Since:
-
-```text
-60 > 40
-```
-
-search only the right half:
-
-```text
-50 60 70
-```
-
-Middle:
-
-```text
-60
-```
-
-Target found.
-
----
-
-# 33. Algorithm for Binary Search
-
-```text
-Step 1: Start
-Step 2: Set low = 0
-Step 3: Set high = n - 1
-Step 4: Calculate mid
-Step 5: Compare arr[mid] with target
-Step 6: If equal, return mid
-Step 7: If target is greater, move low to mid + 1
-Step 8: If target is smaller, move high to mid - 1
-Step 9: Repeat until low > high
-Step 10: Return -1 if not found
-Step 11: Stop
-```
-
----
-
-# 34. Java Code for Binary Search
+# Find Maximum Element
 
 ```java
-public class Main {
+import java.util.Scanner;
+
+public class ArrayMaximum {
 
     public static void main(String[] args) {
 
-        int[] arr = {10, 20, 30, 40, 50, 60, 70};
+        Scanner sc = new Scanner(System.in);
 
-        int target = 60;
+        System.out.print("Enter size: ");
+        int n = sc.nextInt();
 
-        int low = 0;
-        int high = arr.length - 1;
+        int[] arr = new int[n];
 
-        int index = -1;
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
 
-        while (low <= high) {
+        int max = arr[0];
 
-            int mid = low + (high - low) / 2;
+        for(int i = 1; i < n; i++) {
 
-            if (arr[mid] == target) {
-                index = mid;
-                break;
-            }
-
-            else if (arr[mid] < target) {
-                low = mid + 1;
-            }
-
-            else {
-                high = mid - 1;
+            if(arr[i] > max) {
+                max = arr[i];
             }
         }
 
-        if (index != -1) {
-            System.out.println("Element found at index: " + index);
-        } else {
-            System.out.println("Element not found");
-        }
+        System.out.println("Maximum = " + max);
     }
 }
 ```
 
-Output:
+Complexity:
 
 ```text
-Element found at index: 5
+Time = O(n)
+Extra Space = O(1)
 ```
 
 ---
 
-# 35. Time Complexity of Binary Search
+# Find Minimum Element
 
-Best case:
+```java
+import java.util.Scanner;
 
-```text
-O(1)
+public class ArrayMinimum {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter size: ");
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int min = arr[0];
+
+        for(int i = 1; i < n; i++) {
+
+            if(arr[i] < min) {
+                min = arr[i];
+            }
+        }
+
+        System.out.println("Minimum = " + min);
+    }
+}
 ```
-
-Worst case:
-
-```text
-O(log n)
-```
-
-Space complexity for the iterative implementation:
-
-```text
-O(1)
-```
-
-### Important
-
-Binary Search requires the array to be **sorted**.
 
 ---
 
-# 36. Searching Comparison
+# Sum of Array Elements
 
-| Searching     | Requirement           | Best Case | Worst Case |
-| ------------- | --------------------- | --------: | ---------: |
-| Linear Search | No sorting required   |      O(1) |       O(n) |
-| Binary Search | Sorted array required |      O(1) |   O(log n) |
+```java
+import java.util.Scanner;
+
+public class ArraySum {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter size: ");
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        int sum = 0;
+
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+            sum += arr[i];
+        }
+
+        System.out.println("Sum = " + sum);
+    }
+}
+```
+
+Complexity:
+
+```text
+Time = O(n)
+Extra Space = O(1)
+```
 
 ---
 
-# 37. Sorting in 1D Array
+# Average of Array Elements
 
-Sorting means arranging elements in a particular order.
+Formula:
 
-Two common orders are:
+```text
+Average = Sum / Number of Elements
+```
 
-### Ascending
+Java:
+
+```java
+double average = (double) sum / n;
+```
+
+
+```java
+import java.util.Scanner;
+
+public class ArrayAverage {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        int sum = 0;
+
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+            sum += arr[i];
+        }
+
+        double average = (double) sum / n;
+
+        System.out.println("Average = " + average);
+    }
+}
+```
+
+---
+
+# Count Even and Odd Elements
+
+```java
+import java.util.Scanner;
+
+public class EvenOddCount {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        int even = 0;
+        int odd = 0;
+
+        for(int i = 0; i < n; i++) {
+
+            arr[i] = sc.nextInt();
+
+            if(arr[i] % 2 == 0)
+                even++;
+            else
+                odd++;
+        }
+
+        System.out.println("Even = " + even);
+        System.out.println("Odd = " + odd);
+    }
+}
+```
+
+---
+
+# Reverse an Array
+
+Original:
 
 ```text
 10 20 30 40 50
 ```
 
-### Descending
+Reverse:
 
 ```text
 50 40 30 20 10
 ```
 
-Sorting is important because many algorithms, especially Binary Search, require sorted data.
+---
+
+# Reverse Using Two Pointers
+
+We use:
+
+```text
+left
+right
+```
+
+Initially:
+
+```text
+left = 0
+right = n - 1
+```
+
+Swap:
+
+```text
+arr[left]
+arr[right]
+```
+
+Then:
+
+```text
+left++
+right--
+```
+
+Continue until:
+
+```text
+left < right
+```
 
 ---
 
-# 38. Common Sorting Algorithms
+# 43. Reverse Array
 
-Important sorting algorithms include:
+```java
+import java.util.Scanner;
 
-```text
-1. Bubble Sort
-2. Selection Sort
-3. Insertion Sort
-4. Merge Sort
-5. Quick Sort
-6. Heap Sort
+public class ReverseArray {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int left = 0;
+        int right = n - 1;
+
+        while(left < right) {
+
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+
+            left++;
+            right--;
+        }
+
+        System.out.println("Reversed array:");
+
+        for(int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+}
 ```
 
-For beginners, we generally start with:
+Complexity:
 
 ```text
-Bubble Sort
-Selection Sort
-Insertion Sort
+Time = O(n)
+Extra Space = O(1)
 ```
 
 ---
 
-# 39. Bubble Sort
+# 44. Sorting an Array
+
+Sorting means arranging elements in a particular order.
+
+### Ascending Order
+
+```text
+10 20 30 40 50
+```
+
+### Descending Order
+
+```text
+50 40 30 20 10
+```
+
+---
+
+# 45. Bubble Sort
 
 Bubble Sort repeatedly compares adjacent elements and swaps them if they are in the wrong order.
 
@@ -1126,848 +1454,567 @@ Example:
 5 3 4 1
 ```
 
-Compare:
-
-```text
-5 and 3
-```
-
-Since:
-
-```text
-5 > 3
-```
-
-swap:
-
-```text
-3 5 4 1
-```
-
-Then:
-
-```text
-5 and 4
-```
-
-swap:
-
-```text
-3 4 5 1
-```
-
-Then:
-
-```text
-5 and 1
-```
-
-swap:
-
-```text
-3 4 1 5
-```
-
-After one pass, the largest element reaches the end.
+After comparisons, larger elements gradually move toward the end.
 
 ---
 
-# 40. Bubble Sort Algorithm
 
-```text
-Step 1: Start
-Step 2: Repeat for each pass
-Step 3: Compare adjacent elements
-Step 4: If the first is greater than the second, swap them
-Step 5: Continue until the end of the unsorted portion
-Step 6: Repeat until the array is sorted
-Step 7: Stop
-```
 
----
+# Copy an Array
 
-# 41. Java Code for Bubble Sort
+We can copy elements using a loop.
 
 ```java
-public class Main {
+int[] copy = new int[arr.length];
 
-    public static void main(String[] args) {
-
-        int[] arr = {50, 20, 40, 10, 30};
-
-        int n = arr.length;
-
-        for (int i = 0; i < n - 1; i++) {
-
-            for (int j = 0; j < n - 1 - i; j++) {
-
-                if (arr[j] > arr[j + 1]) {
-
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                }
-            }
-        }
-
-        System.out.println("Sorted Array:");
-
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
-    }
+for(int i = 0; i < arr.length; i++) {
+    copy[i] = arr[i];
 }
 ```
 
-Output:
+Complexity:
 
 ```text
-Sorted Array:
-10 20 30 40 50
+Time = O(n)
+Space = O(n)
 ```
 
 ---
 
-# 42. Bubble Sort Complexity
+# Find Second Largest Element
 
-Standard Bubble Sort:
-
-```text
-Best Case    → O(n)      with an optimized early-exit version
-Average Case → O(n²)
-Worst Case   → O(n²)
-```
-
-Space complexity:
-
-```text
-O(1)
-```
-
-because sorting is performed in-place.
-
----
-
-# 43. Selection Sort
-
-Selection Sort repeatedly finds the smallest element from the unsorted portion and places it at the correct position.
+One common semester/exam problem is finding the second largest element.
 
 Example:
 
 ```text
-64 25 12 22 11
-```
-
-Find minimum:
-
-```text
-11
-```
-
-Place it at the beginning:
-
-```text
-11 25 12 22 64
-```
-
-Then find the minimum from the remaining elements:
-
-```text
-12
-```
-
-Result:
-
-```text
-11 12 25 22 64
-```
-
-Continue until sorted.
-
----
-
-# 44. Java Code for Selection Sort
-
-```java
-public class Main {
-
-    public static void main(String[] args) {
-
-        int[] arr = {64, 25, 12, 22, 11};
-
-        int n = arr.length;
-
-        for (int i = 0; i < n - 1; i++) {
-
-            int minIndex = i;
-
-            for (int j = i + 1; j < n; j++) {
-
-                if (arr[j] < arr[minIndex]) {
-                    minIndex = j;
-                }
-            }
-
-            int temp = arr[i];
-            arr[i] = arr[minIndex];
-            arr[minIndex] = temp;
-        }
-
-        System.out.println("Sorted Array:");
-
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
-    }
-}
+10 50 30 40 20
 ```
 
 Output:
 
 ```text
-Sorted Array:
-11 12 22 25 64
+Second Largest = 40
 ```
 
----
-
-# 45. Selection Sort Complexity
-
-Best Case:
-
-```text
-O(n²)
-```
-
-Average Case:
-
-```text
-O(n²)
-```
-
-Worst Case:
-
-```text
-O(n²)
-```
-
-Space:
-
-```text
-O(1)
-```
-
----
-
-# 46. Insertion Sort
-
-Insertion Sort builds the sorted array one element at a time.
-
-Example:
-
-```text
-5 3 4 1
-```
-
-Initially:
-
-```text
-5
-```
-
-Insert `3`:
-
-```text
-3 5
-```
-
-Insert `4`:
-
-```text
-3 4 5
-```
-
-Insert `1`:
-
-```text
-1 3 4 5
-```
-
----
-
-# 47. Java Code for Insertion Sort
+One simple approach is to track the largest and second largest values.
 
 ```java
-public class Main {
+import java.util.Scanner;
+
+public class SecondLargest {
 
     public static void main(String[] args) {
 
-        int[] arr = {5, 3, 4, 1, 2};
+        Scanner sc = new Scanner(System.in);
 
-        int n = arr.length;
+        int n = sc.nextInt();
 
-        for (int i = 1; i < n; i++) {
+        int[] arr = new int[n];
 
-            int key = arr[i];
-
-            int j = i - 1;
-
-            while (j >= 0 && arr[j] > key) {
-
-                arr[j + 1] = arr[j];
-
-                j--;
-            }
-
-            arr[j + 1] = key;
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
         }
 
-        System.out.println("Sorted Array:");
+        int largest = Integer.MIN_VALUE;
+        int second = Integer.MIN_VALUE;
 
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
+        for(int i = 0; i < n; i++) {
+
+            if(arr[i] > largest) {
+
+                second = largest;
+                largest = arr[i];
+
+            } else if(arr[i] > second && arr[i] != largest) {
+
+                second = arr[i];
+            }
+        }
+
+        if(second == Integer.MIN_VALUE) {
+            System.out.println("Second largest distinct element does not exist.");
+        } else {
+            System.out.println("Second Largest = " + second);
         }
     }
 }
 ```
 
-Output:
-
-```text
-Sorted Array:
-1 2 3 4 5
-```
-
 ---
 
-# 48. Insertion Sort Complexity
+# Frequency of an Element
 
-Best Case:
+Suppose:
+
+```text
+Array:
+10 20 10 30 10
+```
+
+Frequency of `10`:
+
+```text
+3
+```
+
+Code:
+
+```java
+int count = 0;
+
+for(int i = 0; i < n; i++) {
+
+    if(arr[i] == target) {
+        count++;
+    }
+}
+
+System.out.println("Frequency = " + count);
+```
+
+Time:
 
 ```text
 O(n)
 ```
 
-Average Case:
-
-```text
-O(n²)
-```
-
-Worst Case:
-
-```text
-O(n²)
-```
-
-Space:
-
-```text
-O(1)
-```
-
 ---
 
-# 49. Java Built-in Sorting
+# Check if Array is Sorted
 
-Java provides built-in sorting functionality through `Arrays.sort()`.
+An array is sorted in ascending order if:
 
-Example:
+```text
+arr[i] <= arr[i + 1]
+```
+
+for every valid `i`.
+
+### Code
 
 ```java
-import java.util.Arrays;
+boolean sorted = true;
 
-public class Main {
+for(int i = 0; i < n - 1; i++) {
 
-    public static void main(String[] args) {
-
-        int[] arr = {50, 20, 40, 10, 30};
-
-        Arrays.sort(arr);
-
-        System.out.println(Arrays.toString(arr));
+    if(arr[i] > arr[i + 1]) {
+        sorted = false;
+        break;
     }
 }
+
+if(sorted)
+    System.out.println("Array is sorted");
+else
+    System.out.println("Array is not sorted");
 ```
 
-Output:
+Complexity:
 
 ```text
-[10, 20, 30, 40, 50]
-```
-
-For DSA learning, however, it is important to implement sorting algorithms manually to understand their logic.
-
----
-
-# 50. Complete Comparison of Array Operations
-
-| Operation           | Description             | Typical Time Complexity |
-| ------------------- | ----------------------- | ----------------------: |
-| Access              | Access element by index |                    O(1) |
-| Update              | Replace element         |                    O(1) |
-| Traversal           | Visit all elements      |                    O(n) |
-| Search              | Find an element         |             O(n) Linear |
-| Binary Search       | Search sorted array     |                O(log n) |
-| Insert at beginning | Shift elements          |                    O(n) |
-| Insert in middle    | Shift elements          |                    O(n) |
-| Insert at end       | If space available      |                    O(1) |
-| Delete at beginning | Shift elements          |                    O(n) |
-| Delete in middle    | Shift elements          |                    O(n) |
-| Delete at end       | Reduce logical size     |                    O(1) |
-
----
-
-# 51. Array Operation Example
-
-Consider:
-
-```text
-arr = [10, 20, 30, 40, 50]
-```
-
-### Access
-
-```java
-arr[2]
-```
-
-Result:
-
-```text
-30
+O(n)
 ```
 
 ---
 
-### Update
+# Array Operations
 
-```java
-arr[2] = 100;
-```
+| Operation              | Description             |  Time Complexity |
+| ---------------------- | ----------------------- | ---------------: |
+| Access                 | Access using index      |             O(1) |
+| Update                 | Change existing element |             O(1) |
+| Traversal              | Visit all elements      |             O(n) |
+| Linear Search          | Search element          |             O(n) |
+| Insertion at beginning | Shift elements right    |             O(n) |
+| Insertion at middle    | Shift elements right    |             O(n) |
+| Insertion at end       | Direct placement        |            O(1)* |
+| Deletion at beginning  | Shift elements left     |             O(n) |
+| Deletion at middle     | Shift elements left     |             O(n) |
+| Deletion at end        | Reduce logical size     |             O(1) |
+| Reverse                | Swap elements           |             O(n) |
+| Find Maximum           | Traverse array          |             O(n) |
+| Find Minimum           | Traverse array          |             O(n) |
+| Bubble Sort            | Repeated comparisons    | O(n²) worst case |
 
-Result:
-
-```text
-10 20 100 40 50
-```
-
----
-
-### Insert
-
-Insert `25` at index `2`:
-
-```text
-10 20 25 100 40 50
-```
-
----
-
-### Delete
-
-Delete index `2`:
-
-```text
-10 20 100 40 50
-```
+`*` Assuming sufficient capacity is already available.
 
 ---
 
-### Search
+# Insertion vs Deletion
 
-Search `40`:
-
-```text
-Index = 3
-```
-
----
-
-### Sort
-
-Before:
-
-```text
-50 20 40 10 30
-```
-
-After:
-
-```text
-10 20 30 40 50
-```
+| Feature        | Insertion              | Deletion               |
+| -------------- | ---------------------- | ---------------------- |
+| Purpose        | Add element            | Remove element         |
+| Main operation | Shift right            | Shift left             |
+| Beginning      | O(n)                   | O(n)                   |
+| Middle         | O(n)                   | O(n)                   |
+| End            | O(1)*                  | O(1)                   |
+| Array size     | Logical size increases | Logical size decreases |
 
 ---
 
-# 52. Important Concept: Array Size vs Logical Size
+# Difference: Array Size vs Logical Size
 
-In Java, an array has a fixed capacity.
+This is very important for insertion and deletion.
 
-Example:
+Suppose:
 
 ```java
 int[] arr = new int[10];
 ```
 
-Capacity:
+The physical array capacity is:
 
 ```text
 10
 ```
 
-But we may currently be using only:
-
-```text
-4
-```
-
-elements.
-
-Therefore, we can maintain:
-
-```java
-int n = 4;
-```
-
-where:
-
-```text
-arr.length = 10
-n = 4
-```
-
-This distinction is important when implementing insertion and deletion manually.
-
-```text
-Array Capacity = Total available positions
-
-Logical Size = Number of currently stored elements
-```
-
----
-
-# 53. Why Array Insertion is Different from Updation?
-
-This is an important interview question.
-
-### Updation
-
-Existing element is replaced.
-
-```text
-10 20 30 40
-      ↓
-     100
-```
-
-Size remains unchanged.
-
-```text
-n = 4
-```
-
-### Insertion
-
-A new element is added.
-
-```text
-10 20 25 30 40
-```
-
-Size increases.
-
-```text
-n = 5
-```
-
-Therefore:
-
-```text
-Update → Replace
-Insert → Add
-```
-
----
-
-# 54. Why Array Deletion Requires Shifting?
-
-Suppose:
+But suppose only 5 elements are currently stored:
 
 ```text
 10 20 30 40 50
 ```
 
-Delete `30`.
-
-Without shifting:
-
-```text
-10 20 _ 40 50
-```
-
-There is a gap.
-
-To maintain a contiguous logical sequence:
-
-```text
-10 20 40 50
-```
-
-we shift elements to the left.
-
-Therefore:
-
-> **Deletion from the middle of an array requires shifting subsequent elements toward the left.**
-
----
-
-# 55. Why Insertion Requires Shifting?
-
-Suppose:
-
-```text
-10 20 30 40
-```
-
-We want:
-
-```text
-25
-```
-
-between `20` and `30`.
-
-We first need an empty position:
-
-```text
-10 20 _ 30 40
-```
-
-Therefore:
-
-```text
-30 → right
-40 → right
-```
-
 Then:
 
 ```text
-10 20 25 30 40
+capacity = 10
+logical size = 5
 ```
 
-Therefore:
-
-> **Insertion into the middle of an array requires shifting elements toward the right.**
+We can insert another element without creating a new array.
 
 ---
 
-# 56. Advantages of 1D Arrays
+# Why Java Array Does Not Support Direct Insertion?
 
-### 1. Simple
+Java arrays have a fixed length.
 
-Arrays are easy to understand and implement.
-
-### 2. Fast Access
-
-Elements can be accessed directly using an index.
-
-```text
-O(1)
-```
-
-### 3. Memory Efficient
-
-Arrays store elements in contiguous memory and have relatively low overhead.
-
-### 4. Cache Friendly
-
-Contiguous storage can provide good cache locality.
-
-### 5. Useful Foundation
-
-Arrays are fundamental to many other data structures and algorithms.
-
----
-
-# 57. Disadvantages of 1D Arrays
-
-### 1. Fixed Size in Java
-
-The length of a Java array cannot be changed after creation.
-
-### 2. Insertion Can Be Expensive
-
-Insertion in the beginning or middle requires shifting.
-
-```text
-O(n)
-```
-
-### 3. Deletion Can Be Expensive
-
-Deletion in the beginning or middle requires shifting.
-
-```text
-O(n)
-```
-
-### 4. Requires Contiguous Storage Conceptually
-
-Arrays are designed around contiguous indexed storage.
-
-### 5. Possible Unused Capacity
-
-When using a larger array to support manual insertion, some positions may remain unused.
-
----
-
-# 58. Complete 1D Array Operations Program
-
-The following program demonstrates:
-
-```text
-Insertion
-Deletion
-Updation
-Linear Search
-Sorting
-```
+If we create:
 
 ```java
-import java.util.Arrays;
+int[] arr = new int[5];
+```
 
-public class Main {
+its length always remains:
+
+```text
+5
+```
+
+We cannot do:
+
+```java
+arr.length = 6;
+```
+
+Therefore, insertion and deletion are implemented by **shifting elements** and maintaining a logical size.
+
+---
+
+# Array Index Out of Bounds
+
+If an array has size `5`:
+
+```text
+Valid indexes:
+0 1 2 3 4
+```
+
+Trying:
+
+```java
+arr[5]
+```
+
+causes:
+
+```text
+ArrayIndexOutOfBoundsException
+```
+
+Therefore, always ensure:
+
+```java
+0 <= index < arr.length
+```
+
+---
+
+# 56. Complete Menu-Driven Array Program
+
+This is an excellent **semester practical/exam program** because it combines several operations.
+
+```java
+import java.util.Scanner;
+
+public class ArrayOperations {
 
     public static void main(String[] args) {
 
-        int[] arr = new int[10];
+        Scanner sc = new Scanner(System.in);
 
-        int n = 5;
+        System.out.print("Enter array capacity: ");
+        int capacity = sc.nextInt();
 
-        arr[0] = 50;
-        arr[1] = 20;
-        arr[2] = 40;
-        arr[3] = 10;
-        arr[4] = 30;
+        int[] arr = new int[capacity];
 
-        System.out.println("Original Array:");
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
 
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
+        System.out.println("Enter elements:");
+
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
         }
 
-        // Insertion
-        int position = 2;
-        int element = 25;
+        int choice;
 
-        for (int i = n; i > position; i--) {
-            arr[i] = arr[i - 1];
-        }
+        do {
 
-        arr[position] = element;
-        n++;
+            System.out.println("\n----- ARRAY MENU -----");
+            System.out.println("1. Traversal");
+            System.out.println("2. Insertion");
+            System.out.println("3. Deletion");
+            System.out.println("4. Update");
+            System.out.println("5. Search");
+            System.out.println("6. Maximum");
+            System.out.println("7. Minimum");
+            System.out.println("8. Exit");
 
-        System.out.println("\n\nAfter Insertion:");
+            System.out.print("Enter choice: ");
+            choice = sc.nextInt();
 
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
+            switch(choice) {
 
-        // Updation
-        position = 2;
-        arr[position] = 100;
+                case 1:
 
-        System.out.println("\n\nAfter Updation:");
+                    System.out.println("Array elements:");
 
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
+                    for(int i = 0; i < n; i++) {
+                        System.out.print(arr[i] + " ");
+                    }
 
-        // Deletion
-        position = 3;
+                    System.out.println();
+                    break;
 
-        for (int i = position; i < n - 1; i++) {
-            arr[i] = arr[i + 1];
-        }
 
-        n--;
+                case 2:
 
-        System.out.println("\n\nAfter Deletion:");
+                    if(n == capacity) {
 
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
+                        System.out.println("Array is full.");
 
-        // Linear Search
-        int target = 40;
-        int index = -1;
+                    } else {
 
-        for (int i = 0; i < n; i++) {
+                        System.out.print("Enter index: ");
+                        int pos = sc.nextInt();
 
-            if (arr[i] == target) {
-                index = i;
-                break;
+                        System.out.print("Enter value: ");
+                        int value = sc.nextInt();
+
+                        if(pos < 0 || pos > n) {
+
+                            System.out.println("Invalid index.");
+
+                        } else {
+
+                            for(int i = n; i > pos; i--) {
+                                arr[i] = arr[i - 1];
+                            }
+
+                            arr[pos] = value;
+                            n++;
+
+                            System.out.println("Element inserted.");
+                        }
+                    }
+
+                    break;
+
+
+                case 3:
+
+                    if(n == 0) {
+
+                        System.out.println("Array is empty.");
+
+                    } else {
+
+                        System.out.print("Enter index to delete: ");
+                        int pos = sc.nextInt();
+
+                        if(pos < 0 || pos >= n) {
+
+                            System.out.println("Invalid index.");
+
+                        } else {
+
+                            for(int i = pos; i < n - 1; i++) {
+                                arr[i] = arr[i + 1];
+                            }
+
+                            n--;
+
+                            System.out.println("Element deleted.");
+                        }
+                    }
+
+                    break;
+
+
+                case 4:
+
+                    System.out.print("Enter index: ");
+                    int index = sc.nextInt();
+
+                    if(index < 0 || index >= n) {
+
+                        System.out.println("Invalid index.");
+
+                    } else {
+
+                        System.out.print("Enter new value: ");
+                        int value = sc.nextInt();
+
+                        arr[index] = value;
+
+                        System.out.println("Element updated.");
+                    }
+
+                    break;
+
+
+                case 5:
+
+                    System.out.print("Enter value to search: ");
+                    int target = sc.nextInt();
+
+                    int found = -1;
+
+                    for(int i = 0; i < n; i++) {
+
+                        if(arr[i] == target) {
+                            found = i;
+                            break;
+                        }
+                    }
+
+                    if(found == -1)
+                        System.out.println("Element not found.");
+                    else
+                        System.out.println("Element found at index " + found);
+
+                    break;
+
+
+                case 6:
+
+                    if(n == 0) {
+
+                        System.out.println("Array is empty.");
+
+                    } else {
+
+                        int max = arr[0];
+
+                        for(int i = 1; i < n; i++) {
+
+                            if(arr[i] > max) {
+                                max = arr[i];
+                            }
+                        }
+
+                        System.out.println("Maximum = " + max);
+                    }
+
+                    break;
+
+
+                case 7:
+
+                    if(n == 0) {
+
+                        System.out.println("Array is empty.");
+
+                    } else {
+
+                        int min = arr[0];
+
+                        for(int i = 1; i < n; i++) {
+
+                            if(arr[i] < min) {
+                                min = arr[i];
+                            }
+                        }
+
+                        System.out.println("Minimum = " + min);
+                    }
+
+                    break;
+
+
+                case 8:
+
+                    System.out.println("Program terminated.");
+                    break;
+
+
+                default:
+
+                    System.out.println("Invalid choice.");
             }
-        }
 
-        System.out.println("\n\nSearching:");
-
-        if (index != -1) {
-            System.out.println("Element found at index: " + index);
-        } else {
-            System.out.println("Element not found");
-        }
-
-        // Sorting
-        for (int i = 0; i < n - 1; i++) {
-
-            for (int j = 0; j < n - 1 - i; j++) {
-
-                if (arr[j] > arr[j + 1]) {
-
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                }
-            }
-        }
-
-        System.out.println("\nAfter Sorting:");
-
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
+        } while(choice != 8);
     }
 }
 ```
 
 ---
 
-# 59. Final Summary
 
-A 1D array is a linear collection of elements accessed using indexes.
+## Traversal
 
-The most important operations are:
-
-```text
-        1D ARRAY
-           |
-    -----------------
-    |   |   |   |   |
- Insert Delete Update Search Sort
-```
-
-### Insertion
-
-Adds a new element.
+> Visiting each element of an array one by one.
 
 ```text
-Middle → Shift elements right
+Time = O(n)
 ```
 
-Typical worst-case complexity:
+---
+
+## Insertion
+
+> Adding a new element at a specified position.
+
+Usually requires shifting elements toward the right.
+
+```text
+Beginning/Middle = O(n)
+End = O(1)*
+```
+
+---
+
+## Deletion
+
+> Removing an element from a specified position.
+
+Usually requires shifting elements toward the left.
+
+```text
+Beginning/Middle = O(n)
+End = O(1)
+```
+
+---
+
+## Searching
+
+> Finding the location of a particular element.
+
+Linear Search:
 
 ```text
 O(n)
@@ -1975,25 +2022,9 @@ O(n)
 
 ---
 
-### Deletion
+## Updating
 
-Removes an element.
-
-```text
-Middle → Shift elements left
-```
-
-Typical worst-case complexity:
-
-```text
-O(n)
-```
-
----
-
-### Updation
-
-Replaces an existing element.
+> Changing the value of an existing element.
 
 ```text
 arr[index] = value;
@@ -2007,70 +2038,86 @@ O(1)
 
 ---
 
-### Searching
+# 58. Array Advantages
 
-Finds an element.
+### 1. Fast Access
 
-Linear Search:
+Elements can be accessed directly using indexes.
 
-```text
-O(n) worst case
+```java
+arr[5]
 ```
 
-Binary Search:
+Complexity:
 
 ```text
-O(log n) worst case
-```
-
-but requires sorted data.
-
----
-
-### Sorting
-
-Arranges elements in a particular order.
-
-Common algorithms:
-
-```text
-Bubble Sort
-Selection Sort
-Insertion Sort
-Merge Sort
-Quick Sort
-Heap Sort
+O(1)
 ```
 
 ---
 
+### 2. Simple to Use
 
-
-# One-Line Definitions
-
-**Array:**
-
-> A linear data structure that stores elements of the same type in indexed positions.
-
-**Insertion:**
-
-> The operation of adding a new element at a specified position.
-
-**Deletion:**
-
-> The operation of removing an existing element from a specified position.
-
-**Updation:**
-
-> The operation of replacing an existing element with a new value.
-
-**Searching:**
-
-> The operation of finding whether a particular element exists in an array and determining its position.
-
-**Sorting:**
-
-> The operation of arranging elements in a specified order, such as ascending or descending order.
+Arrays are easy to understand and implement.
 
 ---
 
+### 3. Memory Efficiency
+
+Arrays have relatively low overhead compared with many dynamic data structures.
+
+---
+
+### 4. Cache-Friendly
+
+Elements are stored sequentially, which can provide good memory locality.
+
+---
+
+# 59. Array Disadvantages
+
+### 1. Fixed Size
+
+Once created, a Java array cannot change length.
+
+---
+
+### 2. Insertion Can Be Expensive
+
+Insertion at the beginning or middle requires shifting.
+
+```text
+O(n)
+```
+
+---
+
+### 3. Deletion Can Be Expensive
+
+Deletion from the beginning or middle also requires shifting.
+
+```text
+O(n)
+```
+
+---
+
+### 4. Homogeneous Data
+
+A primitive `int[]` stores integers only.
+
+---
+
+# 60. Array vs Linked List
+
+| Array                              | Linked List                              |
+| ---------------------------------- | ---------------------------------------- |
+| Contiguous logical storage         | Nodes linked using references            |
+| Fast random access                 | Sequential access                        |
+| Index-based                        | Node/reference based                     |
+| Access O(1)                        | Access O(n)                              |
+| Middle insertion requires shifting | Can be efficient after locating position |
+| Fixed length in Java arrays        | Dynamic size                             |
+| Better cache locality              | Usually less cache-friendly              |
+
+---
