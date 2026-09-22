@@ -1,0 +1,86 @@
+
+// 206 problem: Reverse Linked List
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        while (head != null) {
+            ListNode nextNode = head.next; 
+            head.next = prev;              
+            prev = head;                  
+            head = nextNode;               
+        }
+        return prev;
+    }
+}
+
+//1495 peoblem: Delete the Middle Node of a Linked List
+class Solution {
+    public ListNode deleteMiddle(ListNode head) {
+        ListNode dummy = new ListNode(0, head);
+        ListNode slow = dummy, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        slow.next = slow.next.next;
+        return dummy.next;
+    }
+}
+
+//7 problem: Reverse Integer
+class Solution {
+    public int reverse(int x) {
+        int ans = 0;
+        for (; x != 0; x /= 10) {
+            if (ans < Integer.MIN_VALUE / 10 || ans > Integer.MAX_VALUE / 10) {
+                return 0;
+            }
+            ans = ans * 10 + x % 10;
+        }
+        return ans;
+    }
+}
+
+// 9 problem: Palindrome Number
+class Solution {
+    public boolean isPalindrome(int x) {
+        if (x < 0 || (x > 0 && x % 10 == 0)) {
+            return false;
+        }
+        int y = 0;
+        for (; y < x; x /= 10) {
+            y = y * 10 + x % 10;
+        }
+        return x == y || x == y / 10;
+    }
+}
+
+
+//26 problem: Remove Duplicates from Sorted Array
+
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int k = 0;
+        for (int x : nums) {
+            if (k == 0 || x != nums[k - 1]) {
+                nums[k++] = x;
+            }
+        }
+        return k;
+    }
+}
+
+
+//27 problem: Remove Element
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int k = 0;
+        for (int x : nums) {
+            if (x != val) {
+                nums[k++] = x;
+            }
+        }
+        return k;
+    }
+}
