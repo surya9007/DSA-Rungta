@@ -5,7 +5,7 @@ A **Tree** is a non-linear hierarchical data structure consisting of nodes conne
 
 Unlike arrays and linked lists, trees organize data in a hierarchical structure.
 
-### Applications
+## Applications
 
 - File and Folder Structure
 - Organization Hierarchy
@@ -13,7 +13,7 @@ Unlike arrays and linked lists, trees organize data in a hierarchical structure.
 - Database Indexing
 - Decision Trees
 
-### Example
+## Example
 
 ```text
              10
@@ -168,13 +168,13 @@ Tree Traversal means visiting every node of a tree exactly once in a specific or
 
 There are two major categories:
 
-### 1. Depth First Search (DFS)
+## 1. Depth First Search (DFS)
 
 - Preorder
 - Inorder
 - Postorder
 
-### 2. Breadth First Search (BFS)
+## 2. Breadth First Search (BFS)
 
 - Level Order Traversal
 
@@ -198,13 +198,13 @@ Consider the following tree:
 
 **Rule: Root → Left → Right**
 
-### Algorithm
+## Algorithm
 
 1. Visit the root node.
 2. Traverse the left subtree.
 3. Traverse the right subtree.
 
-### Pseudocode
+## Pseudocode
 
 ```text
 PREORDER(root)
@@ -219,7 +219,7 @@ PREORDER(root)
 4. PREORDER(root.right)
 ```
 
-### Java Code
+## Code
 
 ```java
 void preorder(Node root) {
@@ -245,13 +245,13 @@ void preorder(Node root) {
 
 **Rule: Left → Root → Right**
 
-### Algorithm
+## Algorithm
 
 1. Traverse the left subtree.
 2. Visit the root node.
 3. Traverse the right subtree.
 
-### Pseudocode
+## Pseudocode
 
 ```text
 INORDER(root)
@@ -266,7 +266,7 @@ INORDER(root)
 4. INORDER(root.right)
 ```
 
-### Java Code
+## Code
 
 ```java
 void inorder(Node root) {
@@ -298,7 +298,7 @@ void inorder(Node root) {
 2. Traverse the right subtree.
 3. Visit the root node.
 
-### Pseudocode
+## Pseudocode
 
 ```text
 POSTORDER(root)
@@ -313,7 +313,7 @@ POSTORDER(root)
 4. Print root.data
 ```
 
-### Java Code
+## Code
 
 ```java
 void postorder(Node root) {
@@ -335,14 +335,6 @@ void postorder(Node root) {
 4 5 2 6 7 3 1
 ```
 
-### Difference Between Traversals
-
-| Traversal | Order | Output |
-|---|---|---|
-| Preorder | Root Left Right | 1 2 4 5 3 6 7 |
-| Inorder | Left Root Right | 4 2 5 1 6 3 7 |
-| Postorder | Left Right Root | 4 5 2 6 7 3 1 |
-
 **Easy Trick:**
 
 - Preorder: Root comes first.
@@ -357,7 +349,7 @@ Level Order Traversal visits nodes level by level, from left to right.
 
 It uses a **Queue** data structure.
 
-### Algorithm
+## Algorithm
 
 1. Insert root into the queue.
 2. While the queue is not empty:
@@ -366,7 +358,7 @@ It uses a **Queue** data structure.
    - Insert its left child if present.
    - Insert its right child if present.
 
-### Java Code
+## Code
 
 ```java
 void levelOrder(Node root) {
@@ -415,7 +407,7 @@ Consider the following tree:
                70     80   90
 ```
 
-### Traversal Outputs
+## Traversal Outputs
 
 | Traversal | Result |
 |---|---|
@@ -424,7 +416,7 @@ Consider the following tree:
 | Postorder | 40 70 50 20 80 90 60 30 10 |
 | Level Order | 10 20 30 40 50 60 70 80 90 |
 
-### Preorder Dry Run
+## Preorder Dry Run
 
 Rule: Root → Left → Right
 
@@ -472,7 +464,7 @@ Consider a Binary Tree with 15 nodes:
           10 25 35 45 60 75 85 95
 ```
 
-### Traversal Outputs
+## Traversal Outputs
 
 | Traversal | Result |
 |---|---|
@@ -508,7 +500,7 @@ Let:
 
 A **Binary Search Tree** is a special type of Binary Tree that follows a specific ordering property.
 
-### BST Property
+## BST Property
 
 For every node:
 
@@ -566,7 +558,7 @@ class Node {
 
 Insertion means adding a new node at its correct position while maintaining the BST property.
 
-### Example
+## Example
 
 Insert the following values:
 
@@ -584,14 +576,14 @@ Final BST:
            20  40  60  80
 ```
 
-### Algorithm
+## Algorithm
 
 1. If root is NULL, create a new node.
 2. If new value is smaller than root, insert into left subtree.
 3. If new value is greater than root, insert into right subtree.
 4. Return the root.
 
-### Pseudocode
+## Pseudocode
 
 ```text
 INSERT(root, value)
@@ -608,7 +600,7 @@ INSERT(root, value)
 4. Return root
 ```
 
-### Java Code
+## Code
 
 ```java
 Node insert(Node root, int value) {
@@ -630,7 +622,7 @@ Node insert(Node root, int value) {
 }
 ```
 
-### Dry Run
+## Dry Run
 
 Insert 40:
 
@@ -655,14 +647,14 @@ Insert 40:
 
 Searching means finding whether a particular value exists in BST.
 
-### Algorithm
+## Algorithm
 
 1. If root is NULL, return false.
 2. If target equals root.data, return true.
 3. If target is smaller, search left subtree.
 4. Otherwise, search right subtree.
 
-### Pseudocode
+## Pseudocode
 
 ```text
 SEARCH(root, key)
@@ -680,7 +672,7 @@ SEARCH(root, key)
        return SEARCH(root.right, key)
 ```
 
-### Java Code
+## Code
 
 ```java
 boolean search(Node root, int key) {
@@ -698,7 +690,7 @@ boolean search(Node root, int key) {
 }
 ```
 
-### Dry Run
+## Dry Run
 
 Search 60:
 
@@ -750,7 +742,7 @@ After:
 
 Simply remove the node.
 
-### Case 2: Deleting a Node with One Child
+## Case 2: Deleting a Node with One Child
 
 Example: Delete 30.
 
@@ -774,7 +766,7 @@ After:
 
 Replace the deleted node with its only child.
 
-### Case 3: Deleting a Node with Two Children
+## Case 3: Deleting a Node with Two Children
 
 Example: Delete 50.
 
@@ -809,7 +801,7 @@ After:
      20 40       80
 ```
 
-### Deletion Algorithm
+## Deletion Algorithm
 
 ```text
 DELETE(root, key)
@@ -840,7 +832,7 @@ DELETE(root, key)
 5. Return root
 ```
 
-### Java Code
+## Code
 
 ```java
 Node delete(Node root, int key) {
@@ -891,7 +883,7 @@ Node minValue(Node root) {
 
 # 16. Finding Minimum and Maximum in BST
 
-### Minimum Value
+## Minimum Value
 
 The minimum value is always present in the leftmost node of a BST.
 
@@ -910,7 +902,7 @@ Node findMin(Node root) {
 }
 ```
 
-### Maximum Value
+## Maximum Value
 
 The maximum value is always present in the rightmost node of a BST.
 
@@ -1132,7 +1124,7 @@ class BST {
 }
 ```
 
-### Expected Output
+## Expected Output
 
 ```text
 Inorder:
