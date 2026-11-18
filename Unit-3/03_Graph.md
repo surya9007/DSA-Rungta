@@ -13,7 +13,7 @@ G = (V, E)
 
 **Example:** If `V = {0, 1, 2, 3}` and `E = {(0,1), (0,2), (1,3)}`, the graph has four vertices and three edges.
 
-### terms
+### Important terms
 
 - **Vertex:** A node in a graph.
 - **Edge:** A connection between two vertices.
@@ -173,6 +173,17 @@ class AdjacencyList {
 - Listing all neighbours of a vertex: proportional to its degree.
 - Suitable for sparse graphs (graphs with fewer edges).
 
+### Matrix vs List
+
+| Feature | Adjacency Matrix | Adjacency List |
+|---|---|---|
+| Storage | 2D array | Array/list of lists |
+| Space | `O(V²)` | `O(V + E)` |
+| Edge check | `O(1)` | `O(degree)` in a typical list |
+| Best suited for | Dense graphs | Sparse graphs |
+
+---
+
 ## 4. BFS (Breadth-First Search)
 
 **Breadth-First Search (BFS)** is a graph traversal algorithm that visits vertices level by level. It visits the nearest unvisited neighbours first.
@@ -186,6 +197,27 @@ BFS uses a **Queue (FIFO: First In, First Out)**.
 3. Remove a vertex from the front of the queue.
 4. Visit each of its unvisited neighbours, mark them visited, and add them to the queue.
 5. Repeat until the queue becomes empty.
+
+### BFS Algorithm (Pseudocode)
+
+```text
+BFS(Graph, start):
+    create visited array and mark all vertices false
+    create an empty queue
+    mark start as visited
+    enqueue(start)
+
+    while queue is not empty:
+        node = dequeue()
+        print(node)
+
+        for each neighbour of node:
+            if neighbour is not visited:
+                mark neighbour as visited
+                enqueue(neighbour)
+```
+
+**Algorithm explanation:** The starting vertex is visited first and inserted into the queue. Each time, remove the front vertex, process it, and insert all its unvisited neighbours. The queue ensures that vertices are processed level by level.
 
 ### Java code: BFS
 
@@ -266,6 +298,20 @@ DFS can be implemented using **recursion** or an explicit **stack (LIFO: Last In
 3. Visit an unvisited neighbour by calling DFS again.
 4. When no unvisited neighbour remains, backtrack.
 5. Continue until all reachable vertices have been visited.
+
+### Recursive DFS Algorithm (Pseudocode)
+
+```text
+DFS(Graph, node):
+    mark node as visited
+    print(node)
+
+    for each neighbour of node:
+        if neighbour is not visited:
+            DFS(Graph, neighbour)
+```
+
+**Algorithm explanation:** DFS marks and processes the current vertex, then recursively visits each unvisited neighbour. When a vertex has no unvisited neighbours, the function returns to the previous vertex. This is called backtracking.
 
 ### Java code: Recursive DFS
 
@@ -367,6 +413,42 @@ We use **BFS and two colours**:
 - Give every uncoloured neighbour the opposite colour.
 - If two adjacent vertices have the same colour, the graph is not bipartite.
 - Check every component, because a graph may be disconnected.
+
+### Bipartite Graph Algorithm (BFS + Two Colours)
+
+```text
+IS-BIPARTITE(Graph):
+    fill colour array with -1
+
+    for each vertex start:
+        if start is already coloured:
+            continue
+
+        create an empty queue
+        colour[start] = 0
+        enqueue(start)
+
+        while queue is not empty:
+            node = dequeue()
+
+            for each neighbour of node:
+                if neighbour is uncoloured:
+                    colour[neighbour] = 1 - colour[node]
+                    enqueue(neighbour)
+
+                else if colour[neighbour] == colour[node]:
+                    return false
+
+    return true
+```
+
+**Algorithm explanation:**
+1. Initially, every vertex is uncoloured (`-1`).
+2. Start BFS from each uncoloured vertex so disconnected components are also checked.
+3. Give the starting vertex colour `0`.
+4. Give each uncoloured neighbour the opposite colour (`0` becomes `1`, and `1` becomes `0`).
+5. If an edge joins two vertices with the same colour, return `false`.
+6. If all components are checked without a conflict, return `true`.
 
 ### Java code: Check Bipartite Graph using BFS
 
